@@ -4,12 +4,12 @@ class HangpersonGame
 
   # Get a word from remote "random word" service
   def initialize(word)
-    @word = word
-    @guesses = ""
-    @wrong_guesses = ""
-    @word_with_guesses = ""
+    @word = word 
+    @guesses = "" # tracks correct letter guesses
+    @wrong_guesses = "" # tracks incorrect letter guesses
+    @word_with_guesses = "" # tracks the correctly guessed letters
     1.upto(word.split("").count) { @word_with_guesses += "-" }
-    @attempts = 1
+    @attempts = 1 # tracks the number of attempts
   end
 
   # Function gets a letter from the user and checks if its a correct guess.
@@ -22,8 +22,8 @@ class HangpersonGame
     else raise_error(ArgumentError)
     end
 
-    # STEP 2: check to make sure the user does not enter the same letter more
-    # than once, and if so, returns false
+    # STEP 2: check to make sure the user does not guess the same letter more
+    # than once
     if @guesses.include? letter; return false; end
     if @wrong_guesses.include? letter; return false; end
 
