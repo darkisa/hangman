@@ -42,7 +42,7 @@ class HangpersonApp < Sinatra::Base
     if @game.guess(letter)
       redirect '/show'
     else 
-      flash[:message] = "You have already used that letter"
+      flash[:message] = "You have already used that letter."
       redirect '/show'
     end
   end
