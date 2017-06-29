@@ -1,6 +1,6 @@
 class HangpersonGame
 
-  attr_accessor :word, :guesses, :wrong_guesses, :word_with_guesses
+  attr_accessor :word, :guesses, :wrong_guesses, :word_with_guesses 
   
   def initialize(word)
     @word = word 
@@ -18,7 +18,7 @@ class HangpersonGame
     # raises an error if it is
     if /^[a-zA-Z]+$/.match(letter)
       letter.downcase!
-    else raise_error(ArgumentError)
+    else raise_error("Invalid letter")
     end
 
     # STEP 2: check to make sure the user does not guess the same letter more
@@ -63,7 +63,7 @@ class HangpersonGame
   end
 
   def raise_error(e)
-    raise ArgumentError.new(e)
+      raise ArgumentError.new(e)
   end
 
   def self.get_random_word
