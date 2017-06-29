@@ -1,8 +1,7 @@
 class HangpersonGame
 
   attr_accessor :word, :guesses, :wrong_guesses, :word_with_guesses
-
-  # Get a word from remote "random word" service
+  
   def initialize(word)
     @word = word 
     @guesses = "" # tracks correct letter guesses
@@ -38,11 +37,12 @@ class HangpersonGame
             @word_with_guesses[i] = c
           end
         end 
-    else @wrong_guesses += letter
+    else 
+      @wrong_guesses += letter
+      @attempts += 1
     end
     # update the number of attempts and call the function to check if
     # the user won, lost, or continues playing
-    @attempts += 1
     check_win_or_lose
   end
 
@@ -53,9 +53,9 @@ class HangpersonGame
 
   # function for checking if user won, lost, or continues playing
   def check_win_or_lose
-    if !@word_with_guesses.include?("-") && @attempts < 8
+    if !@word_with_guesses.include?("-")
       return :win
-    elsif @word_with_guesses.include?("-") && @attempts == 8
+    elsif @word_with_guesses.include?("-") && @attempts >= 8
       return :lose
     else 
       return :play 
